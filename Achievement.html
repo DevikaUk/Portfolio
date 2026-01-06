@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Achievements & Certifications</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #faf8f6;
+    }
+
+    .achievements {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      color: #3d2e33;
+    }
+
+    .achievements h2 {
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      max-width: 700px;
+      margin-bottom: 3rem;
+      color: #666;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .achievement-card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: rgba(253, 72, 54, 0.2);
+    }
+
+    .cert-image-container {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #f5e6e1 0%, #ede4e0 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cert-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .achievement-card:hover .cert-image {
+      transform: scale(1.05);
+    }
+
+    .cert-placeholder {
+      font-size: 3rem;
+      opacity: 0.3;
+      color: #fd4836;
+    }
+
+    .card-content {
+      padding: 1.3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #fd4836;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .achievement-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #3d2e33;
+    }
+
+    .achievement-card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .year {
+      font-size: 0.8rem;
+      color: #999;
+      font-weight: 600;
+    }
+
+    .links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #f0f0f0;
+      color: #3d2e33;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 1px solid #e0e0e0;
+    }
+
+    .btn-link:hover {
+      color: #fff;
+      border-color: #fd4836;
+      transform: translateX(2px);
+    }
+
+    .btn-link.primary {
+      background-color: #fd4836;
+      color: #fff;
+      border-color: #fd4836;
+    }
+
+    .btn-link.primary:hover {
+      background-color: #e63d2e;
+      box-shadow: 0 4px 12px rgba(253, 72, 54, 0.3);
+    }
+
+    .icon {
+      font-size: 1rem;
+    }
+
+    /* Modal for certificate view */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 70vh;
+      margin-top: 5vh;
+      animation: slideIn 0.3s ease;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .achievements {
+        padding: 4rem 1.5rem 3rem;
+      }
+
+      .achievements-grid {
+        gap: 1.5rem;
+      }
+
+      .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .links {
+        width: 100%;
+      }
+
+      .btn-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="Navbar.css">
+  <script src="Navbar.js"></script>
+</head>
+<body>
+     <div id="navbar"></div>
+
+  <section class="achievements">
+    <h2>Achievements & Certifications</h2>    
+    <div class="achievements-grid">
+
+      <!-- Hackathon Card -->
+      <div class="achievement-card">
+        <div class="cert-image-container">
+          <img src="images\spark.png" alt="Hackathon Certificate" class="cert-image">
+        </div>
+        <div class="card-content">
+          <div class="badge">Hackathon</div>
+          <h3>Sparkathon – Walmart Hackathon</h3>
+          <div class="card-footer">
+            <span class="year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IBM Certificate -->
+      <div class="achievement-card">
+        <div class="cert-image-container">
+          <img src="images\ibm.png" alt="IBM Certificate" class="cert-image">
+        </div>
+        <div class="card-content">
+          <div class="badge">Certification</div>
+          <h3>Designing User Interfaces and Experiences (UI/UX)-IBM via Coursera</h3>
+          <div class="card-footer">
+            <span class="year">2024</span>
+            <div class="links">
+              <a href="https://coursera.org/verify/Q2AE20NG443F" class="btn-link primary">
+                <span class="icon">🔗</span> Certificate
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DUI Certificate -->
+      <div class="achievement-card">
+        <div class="cert-image-container">
+          <img src="images\hack.png" alt="DUI Certificate" class="cert-image">
+        </div>
+        <div class="card-content">
+          <div class="badge">Certification</div>
+          <h3>JavaScript (Basic)</h3>
+          <div class="card-footer">
+            <span class="year">2024</span>
+            <div class="links">
+              <a href="https://www.hackerrank.com/certificates/582bb77b01fa" class="btn-link primary">
+                <span class="icon">🔗</span> Certificate
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Add click handlers for certificate images to view larger version
+    document.querySelectorAll('.cert-image-container').forEach(container => {
+      container.style.cursor = 'pointer';
+      container.addEventListener('click', function() {
+        const img = this.querySelector('.cert-image');
+        if (img.src && !img.src.includes('YOUR_')) {
+          window.open(img.src, '_blank');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link href="index.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="Navbar.css">
+  <script src="Navbar.js" defer></script>
+
+  <style>
+    .right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .right img {
+      width: 320px;
+      height: 400px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Floating Badges */
+    .floating-badges {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .badge {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 50px;
+      background: #FF6B6B;
+      box-shadow: 0 4px 16px rgba(255, 107, 107, 0.2);
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      pointer-events: auto;
+    }
+
+.image-wrapper {
+  position: relative;
+  width: 320px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-badges {
+  position: absolute;
+  inset: 0;
+}
+.badge:nth-child(1) {
+  top: 20px;
+  right: -20px;
+}
+
+.badge:nth-child(2) {
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+}
+
+.badge:nth-child(3) {
+  bottom: 20px;
+  left: -25px;
+}
+
+
+.badge:nth-child(1) {
+  top: 20px;
+  right: -20px;
+  animation: floatBadge1 4s ease-in-out infinite;
+}
+
+.badge:nth-child(2) {
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  animation: floatBadge2 4s ease-in-out infinite;
+}
+
+.badge:nth-child(3) {
+  bottom: 20px;
+  left: -25px;
+  animation: floatBadge3 4s ease-in-out infinite;
+}
+
+    @keyframes floatBadge1 {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(-8px, 8px);
+      }
+    }
+
+    @keyframes floatBadge2 {
+      0%, 100% {
+        transform: translateY(-50%) translate(0, 0);
+      }
+      50% {
+        transform: translateY(-50%) translate(10px, -8px);
+      }
+    }
+
+    @keyframes floatBadge3 {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(-10px, -8px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    
+function goToProjects() {
+  window.location.href = "Contact.html";
+}
+
+function downloadResume() {
+  const link = document.createElement("a");
+  link.href = "resume/Devika_Unnikrishnan_Resume.pdf";
+  link.download = "Devika_Unnikrishnan_Resume.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+</script>
+
+  <div id="navbar"></div>
+  
+
+  <main class="hero">
+    <div class="left">
+
+      <div class="intro">
+        <h2 id="Hello">Hello I'm</h2>
+        <h1 id="name">Devika Unnikrishnan</h1>
+      </div>
+
+      <p id="intro-para">Aspiring Full Stack Developer focused on front-end design and creating intuitive web experiences.</p>
+
+      <div class="uni">
+        <i data-lucide="graduation-cap"></i>
+        <h2 id="uni-name">Amrita Vishwa Vidyapeetham</h2>
+      </div>
+
+      <div class="buttons">
+        <button id="contact-btn" onclick="goToProjects()">Contact</button>
+        <button id="cv-btn" onclick="downloadResume()">CV</button>
+      </div>
+
+      <div class="footer">
+
+        <h1 id="dev">#dev</h1>
+
+        <div class="icons">
+            <a href="https://www.instagram.com/leisure__art_/" target="_blank" class="icon-btn"><i data-lucide="instagram" style="color: #fd4836;"></i></a>
+            <a href="https://www.linkedin.com/in/devikauk/" target="_blank" class="icon-btn"><i data-lucide="linkedin" style="color: #fd4836;"></i></a>
+            <a href="https://github.com/DevikaUk" target="_blank" class="icon-btn"><i data-lucide="github" style="color: #fd4836;"></i></a>
+            <a href="mailto:devika2005uk@gmail.com" target="_blank" class="icon-btn"><i data-lucide="mail" style="color: #fd4836;"></i></a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="right">
+  <div class="image-wrapper">
+    <div class="floating-badges">
+      <div class="badge">Web Dev</div>
+      <div class="badge">UI/UX</div>
+      <div class="badge">Artist</div>
+    </div>
+    <img src="images\me1.png" alt="Devika-photo">
+  </div>
+</div>
+
+  </main>
+
+   <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

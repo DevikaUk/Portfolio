@@ -1,0 +1,87 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pill-navbar {
+    position: fixed;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.pill-container {
+    background-color: #f0f0f0cf;
+    border-radius: 50px;
+    padding: 0.8rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    max-width: 1100px;
+    width: calc(100% - 40px);
+}
+
+.brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #222;
+}
+
+/* Links */
+.pill-links {
+    list-style: none;
+    display: flex;
+    gap: 1.8rem;
+    margin-left: auto;
+}
+
+.pill-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.pill-links a:hover {
+    color: #fd4836;
+}
+
+/* Mobile menu */
+.menu-toggle {
+    display: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pill-container {
+        flex-wrap: wrap;
+    }
+
+    .pill-links {
+        width: 100%;
+        justify-content: center;
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .pill-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+}
+
+/* Push page content down */
+body {
+    padding-top: 50px;
+}
