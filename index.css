@@ -6,14 +6,14 @@
 }
 
 html, body {
-  height: 100%;
-  width: 100%;
-  background-color: #f8f7f3;
+    min-height: 100%;
+    width: 100%;
+    background-color:#f8f7f3;
 
-  /* FIX: allow scrolling (mobile especially) */
-  overflow-x: hidden;
-  overflow-y: auto;
+    overflow-x: hidden;   /*allow sideways scroll */
+    overflow-y: auto;     /* allow vertical scroll */
 }
+
 
 .hero {
   display: flex;
